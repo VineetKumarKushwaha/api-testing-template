@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+    app:
+        container_name: testing
+        build:
+            context: .
+            dockerfile: ${FILE}
+        network_mode: "host"
