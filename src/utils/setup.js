@@ -2,7 +2,6 @@ const supertest = require("supertest");
 const config = require("../../env.json");
 
 if (!config) throw new Error("env.json is missing at root level");
-
 const allVariables = config.variables;
 Object.keys(allVariables).forEach((variable) => {
     const originInfo = allVariables[variable];

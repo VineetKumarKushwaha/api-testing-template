@@ -5,5 +5,11 @@ services:
         container_name: testing
         build:
             context: .
-            dockerfile: ${FILE}
+            # dockerfile: ${FILE}
+        volumes:
+            - .:/usr/src/api-testing
+            - /usr/src/api-testing/node_modules
         network_mode: "host"
+
+
+        # "test:ci": "npm run lint && FILE=Dockerfile.Prod docker-compose up --build",

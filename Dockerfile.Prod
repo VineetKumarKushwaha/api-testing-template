@@ -1,7 +1,10 @@
 FROM node:10
 
 # app workdir
-WORKDIR /api-testing
+WORKDIR /usr/src/api-testing
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
 # copy app dependencies
 COPY package*.json ./
