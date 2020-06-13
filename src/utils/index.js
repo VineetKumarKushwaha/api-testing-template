@@ -1,38 +1,43 @@
 const R = require("ramda");
 
 const createSession = async (ModuleConfig, path = "") => {
-    if (!ModuleConfig.loginApi)
+    if (!ModuleConfig.loginApi) {
         throw new Error(
             `No login Api found in env.json for variable ${ModuleConfig.variable}`
         );
+    }
+
     const requestP = new Promise((resolve) => {
         ModuleConfig.request
             .post(ModuleConfig.loginApi)
             .send({
                 username: ModuleConfig.username,
-                password: ModuleConfig.password,
+                password: ModuleConfig.password
             })
             .end((err, res) => {
-                if (err || res.status !== 200)
+                if (err || res.status !== 200) {
                     return resolve({ failed: true, data: "Failed to login" });
+                }
                 return resolve({
                     failed: false,
                     data:
                         path === ""
                             ? res.body
-                            : R.path(path.split("."), res.body),
+                            : R.path(path.split("."), res.body)
                 });
             });
     });
 
-    return await requestP;
+    return requestP;
 };
 
 const endSesssion = async (ModuleConfig) => {
-    if (!ModuleConfig.logoutApi)
+    if (!ModuleConfig.logoutApi) {
         throw new Error(
             `No logut Api found in env.json for variable ${ModuleConfig.variable}`
         );
+    }
+
     const requestP = new Promise((resolve) => {
         ModuleConfig.request
             .get(ModuleConfig.logoutApi)
@@ -43,7 +48,7 @@ const endSesssion = async (ModuleConfig) => {
             });
     });
 
-    return await requestP;
+    return requestP;
 };
 
 module.exports = (variableKey) => {
@@ -81,6 +86,6 @@ module.exports = (variableKey) => {
                 sessionInfo = null;
             }
             return response;
-        },
+        }
     };
 };

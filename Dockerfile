@@ -16,4 +16,4 @@ COPY src src
 RUN ls
 
 # Run the specified command within the container.
-CMD [ "npm", "run", "test" ]
+CMD [ "npm", "run", "test:nolint" ]

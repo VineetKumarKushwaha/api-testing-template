@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "description": "Api testing template",
     "scripts": {
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:ci": "FILE=Dockerfile.Prod docker-compose up --build",
-        "test:dev": "docker-compose up --build"
+        "lint": "eslint src/**/*.js",
+        "test": "npm run lint && jest",
+        "test:nolint": "jest",
+        "test:watch": "npm run lint && jest --watch",
+        "test:ci": "npm run lint && FILE=Dockerfile.Prod docker-compose up --build",
+        "test:dev": "npm run lint && docker-compose up --build"
     },
     "keywords": [
         "API",
@@ -20,11 +22,19 @@
     "devDependencies": {
         "cookie": "^0.4.1",
         "cookie-parser": "^1.4.5",
+        "eslint": "^7.2.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.21.2",
+        "eslint-plugin-prettier": "^3.1.3",
         "express": "^4.17.1",
         "jest": "^26.0.1",
-        "ramda": "^0.27.0",
-        "supertest": "^4.0.2",
+        "prettier": "^2.0.5",
         "yargs": "^15.3.1"
+    },
+    "dependencies": {
+        "ramda": "^0.27.0",
+        "supertest": "^4.0.2"
     },
     "engines": {
         "node": ">=10"

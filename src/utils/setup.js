@@ -1,5 +1,5 @@
 const supertest = require("supertest");
-let config = require("../../env.json");
+const config = require("../../env.json");
 
 if (!config) throw new Error("env.json is missing at root level");
 
@@ -52,6 +52,6 @@ Object.keys(allVariables).forEach((variable) => {
         password: originInfo.password,
         loginApi: originInfo.loginApi,
         logoutApi: originInfo.logoutApi,
-        variable,
+        variable
     };
 });
