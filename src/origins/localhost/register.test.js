@@ -15,7 +15,7 @@ it("Throw error when password is less than 6 digit", async (done) => {
         .send({ username: "nikku", password: "23" })
         .set("Accept", "application/json")
         .expect(400)
-        .then((response, error) => {
+        .then((response) => {
             expect(response.body).toBeTruthy();
             expect(response.body.errors[0].msg).toBe(
                 "Please enter a valid password. Min Length should be 6 digit"

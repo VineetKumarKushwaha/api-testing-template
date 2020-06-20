@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Api testing template",
     "scripts": {
-        "lint": "eslint src/**/*.js",
+        "lint": "eslint src/** --ext .js",
         "test": "npm run lint && jest",
         "test:nolint": "jest",
         "test:watch": "npm run lint && jest --watch",

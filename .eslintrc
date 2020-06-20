@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2020": true
+        "es2020": true,
+        "jest": true
     },
     // prettier is first so airbnb-base rules can conflict sometime with prettier reason
     // then this disable those prettier rules below.
